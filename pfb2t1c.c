@@ -68,6 +68,9 @@ int main(int argc, char** argv) {
       fprintf(stderr, "pfb2t1c: bad block header -- maybe not a .pfb\n"); exit(2);
     }
     len=2[(unsigned char*)t] | 3[(unsigned char*)t]<<8 | 4[(unsigned char*)t]<<16 | 5[(unsigned char*)t]<<24;
+    if (len+6<len || bufend-t+0U<len+6) {
+      fprintf(stderr, "pfb2t1c: EOF within block\n"); exit(2);
+    }
     next=t+6+len;
     #if 0
       fprintf(stderr, "read block type=%d len=%lu\n", t[1], len);
