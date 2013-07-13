@@ -98,7 +98,7 @@ int main(int argc, char** argv) {
 
       /* Remove trailer of encrypted code */
       while (len!=0 && ((c=t[len-1])==' ' || c=='\t' || c=='\r' || c=='\n')) len--;
-      if (len<26 || 0!=memcmp(t+(len-=26), "mark currentfile closefile", 26)) { fprintf(stderr, "pfb2t1c: `dup/FontName' expected\n"); exit(16); }
+      if (len<26 || 0!=memcmp(t+(len-=26), "mark currentfile closefile", 26)) { fprintf(stderr, "pfb2t1c: `mark currentfile closefile' expected\n"); exit(16); }
       while (len!=0 && ((c=t[len-1])==' ' || c=='\t' || c=='\r' || c=='\n')) len--;
       if (len<36 || 0!=memcmp(t+(len-=36), "dup/FontName get exch definefont pop", 36)) { fprintf(stderr, "pfb2t1c: `dup/FontName' expected\n"); exit(17); }
       while (len!=0 && ((c=t[len-1])==' ' || c=='\t' || c=='\r' || c=='\n')) len--;
